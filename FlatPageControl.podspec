@@ -12,5 +12,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '10.0'
   s.source_files          = "Source/**/*.swift"
   s.framework             = "UIKit"
+  s.swift_version         = '4.2'
 
 end

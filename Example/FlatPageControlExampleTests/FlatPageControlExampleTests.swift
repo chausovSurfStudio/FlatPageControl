@@ -1,15 +1,15 @@
 //
-//  FlatPageControllerExampleTests.swift
-//  FlatPageControllerExampleTests
+//  FlatPageControlExampleTests.swift
+//  FlatPageControlExampleTests
 //
 //  Created by Александр Чаусов on 02.10.2018.
 //  Copyright © 2018 Surf. All rights reserved.
 //
 
 import XCTest
-@testable import FlatPageControllerExample
+@testable import FlatPageControlExample
 
-class FlatPageControllerExampleTests: XCTestCase {
+class FlatPageControlExampleTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
