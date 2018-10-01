@@ -10,6 +10,8 @@
 		84BE700B2162BD740035B21F /* FlatPageControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BE70012162BD740035B21F /* FlatPageControl.framework */; };
 		84BE70102162BD740035B21F /* FlatPageControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE700F2162BD740035B21F /* FlatPageControlTests.swift */; };
 		84BE70122162BD740035B21F /* FlatPageControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 84BE70042162BD740035B21F /* FlatPageControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84BE70482162C5650035B21F /* FlatPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE70472162C5650035B21F /* FlatPageControl.swift */; };
+		84BE70492162C5650035B21F /* FlatPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE70472162C5650035B21F /* FlatPageControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,7 @@
 		84BE700A2162BD740035B21F /* FlatPageControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlatPageControlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BE700F2162BD740035B21F /* FlatPageControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatPageControlTests.swift; sourceTree = "<group>"; };
 		84BE70112162BD740035B21F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84BE70472162C5650035B21F /* FlatPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatPageControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +56,11 @@
 		84BE6FF72162BD740035B21F = {
 			isa = PBXGroup;
 			children = (
-				84BE70032162BD740035B21F /* FlatPageControl */,
+				84BE70032162BD740035B21F /* Source */,
 				84BE700E2162BD740035B21F /* FlatPageControlTests */,
 				84BE70022162BD740035B21F /* Products */,
+				84BE70042162BD740035B21F /* FlatPageControl.h */,
+				84BE70052162BD740035B21F /* Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,13 +73,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		84BE70032162BD740035B21F /* FlatPageControl */ = {
+		84BE70032162BD740035B21F /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				84BE70042162BD740035B21F /* FlatPageControl.h */,
-				84BE70052162BD740035B21F /* Info.plist */,
+				84BE70472162C5650035B21F /* FlatPageControl.swift */,
 			);
-			path = FlatPageControl;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		84BE700E2162BD740035B21F /* FlatPageControlTests */ = {
@@ -148,6 +152,7 @@
 				TargetAttributes = {
 					84BE70002162BD740035B21F = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 					84BE70092162BD740035B21F = {
 						CreatedOnToolsVersion = 10.0;
@@ -194,6 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84BE70482162C5650035B21F /* FlatPageControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84BE70102162BD740035B21F /* FlatPageControlTests.swift in Sources */,
+				84BE70492162C5650035B21F /* FlatPageControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +348,7 @@
 		84BE70162162BD740035B21F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -358,6 +366,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = surf.FlatPageControl;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -366,6 +375,7 @@
 		84BE70172162BD740035B21F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -391,6 +401,7 @@
 		84BE70192162BD740035B21F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DEESDC93HV;
 				INFOPLIST_FILE = FlatPageControlTests/Info.plist;
@@ -409,6 +420,7 @@
 		84BE701A2162BD740035B21F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DEESDC93HV;
 				INFOPLIST_FILE = FlatPageControlTests/Info.plist;

@@ -1,0 +1,11 @@
+platform :ios, '10.0'
+use_frameworks!
+
+target 'FlatPageControllerExample' do
+  pod 'FlatPageController', :path => '../'
+
+  target 'FlatPageControllerExampleTests' do
+    inherit! :search_paths
+  end
+
+end
