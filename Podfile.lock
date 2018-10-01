@@ -2,19 +2,23 @@ PODS:
   - Koloda (4.4):
     - pop (~> 1.0)
   - pop (1.0.10)
+  - SwiftGen (5.3.0)
 
 DEPENDENCIES:
   - Koloda (~> 4.4)
+  - SwiftGen (~> 5.3)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Koloda
     - pop
+    - SwiftGen
 
 SPEC CHECKSUMS:
   Koloda: 0f3c51580d9d547c66a5cd9e4771611afc3e259e
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
+  SwiftGen: 4379bd3640b0a212a0f6ea3c494adba385513d10
 
-PODFILE CHECKSUM: bde19549caa4d2fc37a94e1835f0b4c16ec428ef
+PODFILE CHECKSUM: 7dda49774d112b9661b38496fcfa3c971e5cbc65
 
 COCOAPODS: 1.5.0

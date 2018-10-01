@@ -2,8 +2,8 @@ platform :ios, '10.0'
 inhibit_all_warnings!
 
 target 'FlatPageControl' do
-  use_frameworks!
+    use_frameworks!
 
-  pod 'Koloda', '~> 4.4'
+    pod 'SwiftGen', '~> 5.3'
 
 end
