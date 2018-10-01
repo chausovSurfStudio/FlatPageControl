@@ -131,7 +131,6 @@
 				844866B521518352005DC541 /* Sources */,
 				844866B621518352005DC541 /* Frameworks */,
 				844866B721518352005DC541 /* Resources */,
-				1181B4840F2E4F735FB1AE8C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -219,26 +218,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1181B4840F2E4F735FB1AE8C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-FlatPageControl/Pods-FlatPageControl-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Koloda/Koloda.framework",
-				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Koloda.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlatPageControl/Pods-FlatPageControl-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		46A599DCCAB74885B88D9913 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
