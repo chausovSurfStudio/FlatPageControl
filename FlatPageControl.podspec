@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.source      = { :git => "https://github.com/chausovSurfStudio/FlatPageControl.git", :tag => s.version }
 
   s.ios.deployment_target = '10.0'
-  s.source_files          = "Source/**/*.swift"
+  s.source_files          = "Source/**/*.{swift,xib}"
   s.framework             = "UIKit"
   s.swift_version         = '4.2'
 
