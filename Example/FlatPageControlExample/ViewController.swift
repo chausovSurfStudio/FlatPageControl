@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     
     // MARK: - IBOutlets
     
-    @IBOutlet private weak var pageControl: FlatPageControl!
+    @IBOutlet private weak var pageControl: FlatPageControlq!
     
     // MARK: - Private Properties
     
