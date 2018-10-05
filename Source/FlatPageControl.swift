@@ -11,7 +11,7 @@ import UIKit
 /// Custom page control with a limited number of visible indicators
 public class FlatPageControl: UIControl {
     
-    private enum ScrollDirection: Int {
+    private enum ScrollDirectionQ: Int {
         case none
         case next
         case previous
