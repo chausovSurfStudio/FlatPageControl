@@ -9,7 +9,7 @@
 import UIKit
 
 /// Custom page control with a limited number of visible indicators
-final class FlatPageControl: UIControl {
+public class FlatPageControl: UIControl {
     
     private enum ScrollDirection: Int {
         case none
@@ -36,30 +36,30 @@ final class FlatPageControl: UIControl {
     
     // MARK: - Public Properties
     
-    var view: UIView! {
+    public var view: UIView! {
         return subviews.first
     }
-    var numberOfPages: Int = 1 {
+    public var numberOfPages: Int = 1 {
         didSet {
             layoutSubviews()
         }
     }
-    var hidesForSinglePage: Bool = true {
+    public var hidesForSinglePage: Bool = true {
         didSet {
             layoutSubviews()
         }
     }
-    var pageIndicatorTintColor: UIColor? {
+    public var pageIndicatorTintColor: UIColor? {
         didSet {
             updatePageIndicatorsColor()
         }
     }
-    var currentPageIndicatorTintColor: UIColor? {
+    public var currentPageIndicatorTintColor: UIColor? {
         didSet {
             updatePageIndicatorsColor()
         }
     }
-    var extraPageIndicatorTintColor: UIColor? {
+    public var extraPageIndicatorTintColor: UIColor? {
         didSet {
             updatePageIndicatorsColor()
         }
@@ -84,7 +84,7 @@ final class FlatPageControl: UIControl {
         setupControl()
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         layoutPageIndicators()
         updatePageIndicatorsColor()
@@ -96,7 +96,7 @@ final class FlatPageControl: UIControl {
      Method allows you to set the current page index and pass "animated" flag
      - Note: it is recommended to set the current page with the animation only if the user changes the number of the visible page manually, without animation in other case (for example, on view setup)
      */
-    func setCurrentPage(_ currentPage: Int, animated: Bool) {
+    public func setCurrentPage(_ currentPage: Int, animated: Bool) {
         guard currentPage < numberOfPages else {
             return
         }
