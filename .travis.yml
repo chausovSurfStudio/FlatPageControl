@@ -2,9 +2,3 @@ language: Swift
 osx_image: xcode10
 xcode_project: FlatPageControl.xcodeproj
 xcode_scheme: FlatPageControl
-before_install:
-  - gem install xcpretty -N
-  - brew update
-  - brew install swiftlint || true
-script:
-  - set -o pipefail
