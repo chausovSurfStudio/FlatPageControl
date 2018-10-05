@@ -11,6 +11,12 @@ import FlatPageControl
 
 class ViewController: UIViewController {
     
+    // MARK: - Constants
+    
+    private struct Constants {
+        static let numberOfPages = 25
+    }
+    
     // MARK: - IBOutlets
     
     @IBOutlet private weak var pageControl: FlatPageControl!
@@ -23,7 +29,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        pageControl.numberOfPages = 25
+        pageControl.numberOfPages = Constants.numberOfPages
         pageControl.setCurrentPage(currentPage, animated: false)
     }
 
@@ -35,11 +41,17 @@ private extension ViewController {
     
     @IBAction func tapOnPrevButton(_ sender: UIButton) {
         currentPage -= 1
+        if currentPage < 0 {
+            currentPage = Constants.numberOfPages - 1
+        }
         pageControl.setCurrentPage(currentPage, animated: true)
     }
     
     @IBAction func tapOnNextButton(_ sender: UIButton) {
         currentPage += 1
+        if currentPage >= Constants.numberOfPages {
+            currentPage = 0
+        }
         pageControl.setCurrentPage(currentPage, animated: true)
     }
     
