@@ -33,6 +33,10 @@ class ViewController: UIViewController {
         pageControl.setCurrentPage(currentPage, animated: false)
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
 }
 
 // MARK: - Actions
