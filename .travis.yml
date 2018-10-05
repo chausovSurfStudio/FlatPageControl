@@ -8,4 +8,4 @@ before_install:
   - brew install swiftlint || true
 script:
   - set -o pipefail
-  - xcodebuild clean build -sdk iphonesimulator -project FlatPageControl.xcodeproj -scheme FlatPageControl CODE_SIGNING_REQUIRED=NO
+  - xcodebuild clean build -sdk iphonesimulator -project FlatPageControl.xcodeproj -scheme FlatPageControl CODE_SIGNING_REQUIRED=NO | xcpretty
