@@ -25,15 +25,38 @@
                                     <constraint firstAttribute="height" constant="40" id="RYA-O8-9io"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="83g-5C-1dn">
+                                <rect key="frame" x="30" y="403.5" width="45" height="30"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Назад"/>
+                                <connections>
+                                    <action selector="tapOnPrevButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cTT-36-xhX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LtS-5o-6sy">
+                                <rect key="frame" x="291" y="403.5" width="54" height="30"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Вперед"/>
+                                <connections>
+                                    <action selector="tapOnNextButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gtn-CE-VIV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.68825061269999999" green="0.45812974379999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qc9-7k-Apj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6b9-Jm-JfA"/>
+                            <constraint firstItem="83g-5C-1dn" firstAttribute="top" secondItem="qc9-7k-Apj" secondAttribute="bottom" constant="50" id="Eyv-6G-JOl"/>
                             <constraint firstItem="qc9-7k-Apj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="S5K-rc-rdZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LtS-5o-6sy" secondAttribute="trailing" constant="30" id="Yew-cE-c31"/>
+                            <constraint firstItem="83g-5C-1dn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="dDH-oo-GU4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qc9-7k-Apj" secondAttribute="trailing" id="e9k-LO-BUG"/>
+                            <constraint firstItem="LtS-5o-6sy" firstAttribute="top" secondItem="qc9-7k-Apj" secondAttribute="bottom" constant="50" id="o92-Uu-Hzt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="pageControl" destination="qc9-7k-Apj" id="Cqa-81-UQV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
