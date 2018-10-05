@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		847A45DF2167E2FB00125BEE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84BE70052162BD740035B21F /* Info.plist */; };
 		84BE700B2162BD740035B21F /* FlatPageControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BE70012162BD740035B21F /* FlatPageControl.framework */; };
 		84BE70102162BD740035B21F /* FlatPageControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE700F2162BD740035B21F /* FlatPageControlTests.swift */; };
 		84BE70122162BD740035B21F /* FlatPageControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 84BE70042162BD740035B21F /* FlatPageControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -191,7 +190,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				847A45DF2167E2FB00125BEE /* Info.plist in Resources */,
 				84BE707D216413860035B21F /* FlatPageControl.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
