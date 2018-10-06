@@ -10,23 +10,23 @@ import UIKit
 import FlatPageControl
 
 class ViewController: UIViewController {
-    
+
     // MARK: - Constants
-    
+
     private struct Constants {
         static let numberOfPages = 25
     }
-    
+
     // MARK: - IBOutlets
-    
+
     @IBOutlet private weak var pageControl: FlatPageControl!
-    
+
     // MARK: - Private Properties
-    
+
     private var currentPage: Int = 0
-    
+
     // MARK: - UIViewController
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         pageControl.numberOfPages = Constants.numberOfPages
@@ -36,13 +36,13 @@ class ViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
+
 }
 
 // MARK: - Actions
 
 private extension ViewController {
-    
+
     @IBAction func tapOnPrevButton(_ sender: UIButton) {
         currentPage -= 1
         if currentPage < 0 {
@@ -50,7 +50,7 @@ private extension ViewController {
         }
         pageControl.setCurrentPage(currentPage, animated: true)
     }
-    
+
     @IBAction func tapOnNextButton(_ sender: UIButton) {
         currentPage += 1
         if currentPage >= Constants.numberOfPages {
@@ -58,5 +58,5 @@ private extension ViewController {
         }
         pageControl.setCurrentPage(currentPage, animated: true)
     }
-    
+
 }

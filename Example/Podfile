@@ -2,6 +2,7 @@ use_frameworks!
 platform :ios, '10.0'
 
 target 'FlatPageControlExample' do
+    pod 'SwiftLint'
     pod 'FlatPageControl', :path => '../'
 
     target 'FlatPageControlExampleTests' do
