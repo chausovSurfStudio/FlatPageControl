@@ -14,6 +14,8 @@
 		84BE7079216413430035B21F /* FlatPageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE7078216413430035B21F /* FlatPageIndicator.swift */; };
 		84BE707B216413790035B21F /* FlatPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE707A216413790035B21F /* FlatPageControl.swift */; };
 		84BE707D216413860035B21F /* FlatPageControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BE707C216413860035B21F /* FlatPageControl.xib */; };
+		84D76D1621694CB600DFE2A3 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D76D1521694CB600DFE2A3 /* NSObject.swift */; };
+		84D76D1C21694DC700DFE2A3 /* FlatPageControlLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D76D1B21694DC700DFE2A3 /* FlatPageControlLogic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,8 @@
 		84BE7078216413430035B21F /* FlatPageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatPageIndicator.swift; sourceTree = "<group>"; };
 		84BE707A216413790035B21F /* FlatPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatPageControl.swift; sourceTree = "<group>"; };
 		84BE707C216413860035B21F /* FlatPageControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlatPageControl.xib; sourceTree = "<group>"; };
+		84D76D1521694CB600DFE2A3 /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
+		84D76D1B21694DC700DFE2A3 /* FlatPageControlLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatPageControlLogic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +85,10 @@
 		84BE70032162BD740035B21F /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				84BE707A216413790035B21F /* FlatPageControl.swift */,
-				84BE707C216413860035B21F /* FlatPageControl.xib */,
-				84BE7078216413430035B21F /* FlatPageIndicator.swift */,
-				84BE7076216413200035B21F /* ViewsPool.swift */,
+				84D76D1A21694D5E00DFE2A3 /* Extensions */,
+				84D76D1721694D2800DFE2A3 /* FlatPageControl */,
+				84D76D1821694D3800DFE2A3 /* Indicator */,
+				84D76D1921694D4800DFE2A3 /* ViewsPool */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -96,6 +100,40 @@
 				84BE70112162BD740035B21F /* Info.plist */,
 			);
 			path = FlatPageControlTests;
+			sourceTree = "<group>";
+		};
+		84D76D1721694D2800DFE2A3 /* FlatPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				84BE707A216413790035B21F /* FlatPageControl.swift */,
+				84BE707C216413860035B21F /* FlatPageControl.xib */,
+				84D76D1B21694DC700DFE2A3 /* FlatPageControlLogic.swift */,
+			);
+			path = FlatPageControl;
+			sourceTree = "<group>";
+		};
+		84D76D1821694D3800DFE2A3 /* Indicator */ = {
+			isa = PBXGroup;
+			children = (
+				84BE7078216413430035B21F /* FlatPageIndicator.swift */,
+			);
+			path = Indicator;
+			sourceTree = "<group>";
+		};
+		84D76D1921694D4800DFE2A3 /* ViewsPool */ = {
+			isa = PBXGroup;
+			children = (
+				84BE7076216413200035B21F /* ViewsPool.swift */,
+			);
+			path = ViewsPool;
+			sourceTree = "<group>";
+		};
+		84D76D1A21694D5E00DFE2A3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				84D76D1521694CB600DFE2A3 /* NSObject.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,8 +247,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				84BE7077216413200035B21F /* ViewsPool.swift in Sources */,
+				84D76D1621694CB600DFE2A3 /* NSObject.swift in Sources */,
 				84BE707B216413790035B21F /* FlatPageControl.swift in Sources */,
 				84BE7079216413430035B21F /* FlatPageIndicator.swift in Sources */,
+				84D76D1C21694DC700DFE2A3 /* FlatPageControlLogic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

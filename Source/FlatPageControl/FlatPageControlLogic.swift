@@ -1,123 +1,32 @@
 //
-//  FlatPageControl.swift
+//  FlatPageControlLogic.swift
 //  FlatPageControl
 //
-//  Created by Александр Чаусов on 02.10.2018.
+//  Created by Александр Чаусов on 06.10.2018.
 //  Copyright © 2018 Surf. All rights reserved.
 //
 
-import UIKit
+extension FlatPageControl {
 
-/// Custom page control with a limited number of visible indicators
-public class FlatPageControl: UIControl {
-    
-    private enum ScrollDirection: Int {
+    enum ScrollDirection: Int {
         case none
         case next
         case previous
     }
-    
+
     // MARK: - Constants
-    
+
     private struct Constants {
-        static let defaultPageIndicatorTintColor = UIColor.white.withAlphaComponent(0.2)
-        static let defaultCurrentPageIndicatorTintColor = UIColor.white
-        static let defaultExtraPageIndicatorTintColor = UIColor.white.withAlphaComponent(0.1)
-        
         static let animationDuration: TimeInterval = 0.2
         static let pageIndicatorWidth: CGFloat = 10
-        
-        static let maxPagesNumber: Int = 16
     }
-    
-    // MARK: - IBOutlets
-    
-    @IBOutlet private var containerView: UIView!
-    
-    // MARK: - Public Properties
-    
-    public var view: UIView! {
-        return subviews.first
-    }
-    public var numberOfPages: Int = 1 {
-        didSet {
-            layoutSubviews()
-        }
-    }
-    public var hidesForSinglePage: Bool = true {
-        didSet {
-            layoutSubviews()
-        }
-    }
-    public var pageIndicatorTintColor: UIColor? {
-        didSet {
-            updatePageIndicatorsColor()
-        }
-    }
-    public var currentPageIndicatorTintColor: UIColor? {
-        didSet {
-            updatePageIndicatorsColor()
-        }
-    }
-    public var extraPageIndicatorTintColor: UIColor? {
-        didSet {
-            updatePageIndicatorsColor()
-        }
-    }
-    
-    // MARK: - Private Properties
-    
-    private var viewsPool: ViewsPool = ViewsPool()
-    private var currentPageIndicators: [FlatPageIndicator] = []
-    private var offset: Int = 0
-    private var currentPage: Int = 0
-    
-    // MARK: - UIControl
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupControl()
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupControl()
-    }
-    
-    override public func layoutSubviews() {
-        super.layoutSubviews()
-        layoutPageIndicators()
-        updatePageIndicatorsColor()
-    }
-    
-    // MARK: - Internal Methods
-    
-    /**
-     Method allows you to set the current page index and pass "animated" flag
-     - Note: it is recommended to set the current page with the animation only if the user changes the number of the visible page manually, without animation in other case (for example, on view setup)
-     */
-    public func setCurrentPage(_ currentPage: Int, animated: Bool) {
-        guard currentPage < numberOfPages else {
-            return
-        }
-        if self.currentPage != currentPage {
-            let oldCurrentPage = self.currentPage
-            self.currentPage = currentPage
-            if animated && abs(currentPage - oldCurrentPage) == 1 {
-                refreshCurrentPageIndicator(oldCurrentPage: oldCurrentPage)
-            } else {
-                refreshOffset()
-                layoutSubviews()
-            }
-        }
-    }
-    
+
 }
 
 // MARK: - Setup and layout logic
 
-private extension FlatPageControl {
-    
+extension FlatPageControl {
+
     func setupControl() {
         let view = Bundle(for: type(of: self)).loadNibNamed(self.nameOfClass, owner: self, options: nil)?.first as? UIView
         if let v = view {
@@ -125,15 +34,15 @@ private extension FlatPageControl {
             v.frame = self.bounds
         }
     }
-    
+
     /// Method remove all indicators and redraw them
     func layoutPageIndicators() {
         let width: CGFloat = CGFloat(countOfVisibleIndicators()) * Constants.pageIndicatorWidth
         let height = self.bounds.height
-        
+
         containerView.subviews.forEach({ $0.removeFromSuperview() })
         currentPageIndicators.removeAll()
-        
+
         containerView.frame = CGRect(x: (self.bounds.width - width) / 2,
                                      y: 0,
                                      width: width,
@@ -146,14 +55,14 @@ private extension FlatPageControl {
             containerView.addSubview(indicator)
             currentPageIndicators.append(indicator)
         }
-        
+
         containerView.isHidden = numberOfPages == 1 && hidesForSinglePage
     }
-    
+
     /// Method refresh and redraw page indicators (with shift animation if needed)
     func refreshCurrentPageIndicator(oldCurrentPage: Int) {
         let direction = scrollDirection()
-        
+
         switch direction {
         case .next, .previous:
             removeAndHideIndicator(towards: direction)
@@ -162,14 +71,14 @@ private extension FlatPageControl {
             scrollIndicators(towards: direction)
             updatePageIndicatorsColor(animated: true)
         case .none:
-            if numberOfPages > Constants.maxPagesNumber {
+            if numberOfPages > maxPagesNumber {
                 if currentPage == 0 {
                     // current page is first page
                     offset = 0
                     updatePageIndicatorsColor(animated: true)
                 } else if currentPage == (numberOfPages - 1) {
                     // current page is last page
-                    offset = numberOfPages - Constants.maxPagesNumber
+                    offset = numberOfPages - maxPagesNumber
                     updatePageIndicatorsColor(animated: true)
                 } else {
                     // case, when we shouldn't scroll our indicators, redraw only two indicators with animation
@@ -183,7 +92,7 @@ private extension FlatPageControl {
             }
         }
     }
-    
+
     /// Method only refresh current indicators offset value depending on the currentPage value
     func refreshOffset() {
         if currentPage == 0 {
@@ -191,26 +100,26 @@ private extension FlatPageControl {
         } else if offset + countOfVisibleIndicators() - 1 > currentPage && offset < currentPage {
             // nothing to do, the current page is in the visible range
         } else {
-            let maxOffset = max(0, numberOfPages - Constants.maxPagesNumber)
-            let leftOffsetFromCurrentPage: Int = Constants.maxPagesNumber - 2
+            let maxOffset = max(0, numberOfPages - maxPagesNumber)
+            let leftOffsetFromCurrentPage: Int = maxPagesNumber - 2
             let maxAllowedOffsetForCurrentpage = max(0, currentPage - leftOffsetFromCurrentPage)
             offset = min(maxOffset, maxAllowedOffsetForCurrentpage)
         }
     }
-    
+
 }
 
 // MARK: - Colors support methods
 
-private extension FlatPageControl {
-    
+extension FlatPageControl {
+
     /// Method update colors for all indicators
     func updatePageIndicatorsColor(animated: Bool = false) {
         for index in 0..<currentPageIndicators.count {
             redrawPageIndicator(atIndex: index, color: colorForIndicator(at: index + offset), animated: animated)
         }
     }
-    
+
     /// Method allows you update color for indicator at specific index in currentPageIndicators array
     func redrawPageIndicator(atIndex index: Int, color: UIColor, animated: Bool) {
         if index >= self.currentPageIndicators.count || index < 0 {
@@ -225,44 +134,27 @@ private extension FlatPageControl {
             indicator.changeIndicatorColor(color)
         }
     }
-    
+
     /// Method return color for indicator at specific index
     func colorForIndicator(at index: Int) -> UIColor {
         if index == currentPage {
-            return colorForCurrentPageIndicator()
-        } else if isLeftExtraPage(index) {
-            return colorForExtraPageIndicator()
-        } else if isRightExtraPage(index) {
-            return colorForExtraPageIndicator()
+            return currentPageIndicatorTintColor
+        } else if isLeftExtraPage(index) || isRightExtraPage(index) {
+            return extraPageIndicatorTintColor
         } else {
-            return colorForPageIndicator()
+            return pageIndicatorTintColor
         }
     }
-    
-    /// Normal page indicator color
-    func colorForPageIndicator() -> UIColor {
-        return pageIndicatorTintColor ?? Constants.defaultPageIndicatorTintColor
-    }
-    
-    /// Current page indicator color
-    func colorForCurrentPageIndicator() -> UIColor {
-        return currentPageIndicatorTintColor ?? Constants.defaultCurrentPageIndicatorTintColor
-    }
-    
-    /// Extra page indicator color
-    func colorForExtraPageIndicator() -> UIColor {
-        return extraPageIndicatorTintColor ?? Constants.defaultExtraPageIndicatorTintColor
-    }
-    
+
 }
 
 // MARK: - Private methods
 
-private extension FlatPageControl {
-    
+extension FlatPageControl {
+
     /// Return you direction in which it is necessary to move the current indicators
-    private func scrollDirection() -> ScrollDirection {
-        guard numberOfPages > Constants.maxPagesNumber else {
+    func scrollDirection() -> ScrollDirection {
+        guard numberOfPages > maxPagesNumber else {
             return .none
         }
         if isRightExtraPage(currentPage) {
@@ -272,9 +164,9 @@ private extension FlatPageControl {
         }
         return .none
     }
-    
+
     /// Remove last or first indicator from indicators array, shift and hide it with animation depending on the direction value
-    private func removeAndHideIndicator(towards direction: ScrollDirection) {
+    func removeAndHideIndicator(towards direction: ScrollDirection) {
         guard direction == .next || direction == .previous else {
             return
         }
@@ -283,7 +175,7 @@ private extension FlatPageControl {
         guard let indicator = pageIndicator else {
             return
         }
-        
+
         let indicatorOrigin = indicator.frame.origin
         if let index = currentPageIndicators.index(of: indicator) {
             currentPageIndicators.remove(at: index)
@@ -295,9 +187,9 @@ private extension FlatPageControl {
             indicator.removeFromSuperview()
         }
     }
-    
+
     /// Method add page indicator in indicators array and on the view depending on the direction value
-    private func addIndicator(towards direction: ScrollDirection) {
+    func addIndicator(towards direction: ScrollDirection) {
         guard direction == .next || direction == .previous else {
             return
         }
@@ -307,7 +199,7 @@ private extension FlatPageControl {
                                                       y: 0,
                                                       width: Constants.pageIndicatorWidth,
                                                       height: height))
-        indicator.changeIndicatorColor(colorForPageIndicator().withAlphaComponent(0.0))
+        indicator.changeIndicatorColor(pageIndicatorTintColor.withAlphaComponent(0.0))
         containerView.addSubview(indicator)
         if direction == .next {
             currentPageIndicators.append(indicator)
@@ -315,9 +207,9 @@ private extension FlatPageControl {
             currentPageIndicators.insert(indicator, at: 0)
         }
     }
-    
+
     /// Method allows you to shift all indicators at passed direction animated
-    private func scrollIndicators(towards direction: ScrollDirection) {
+    func scrollIndicators(towards direction: ScrollDirection) {
         guard direction == .next || direction == .previous else {
             return
         }
@@ -329,41 +221,28 @@ private extension FlatPageControl {
             }
         }
     }
-    
+
     /// Return you new page indicator with passed frame
     func newPageIndicator(with frame: CGRect) -> FlatPageIndicator {
         guard let indicator = viewsPool.view() as? FlatPageIndicator else {
-            let indicator = FlatPageIndicator(frame: frame, tintColor: colorForPageIndicator())
+            let indicator = FlatPageIndicator(frame: frame, tintColor: pageIndicatorTintColor)
             viewsPool.push(indicator)
             return indicator
         }
         indicator.frame = frame
         return indicator
     }
-    
+
     func countOfVisibleIndicators() -> Int {
-        return min(numberOfPages, Constants.maxPagesNumber)
+        return min(numberOfPages, maxPagesNumber)
     }
-    
+
     func isLeftExtraPage(_ page: Int) -> Bool {
         return page == offset && offset > 0
     }
-    
+
     func isRightExtraPage(_ page: Int) -> Bool {
         return page == offset + currentPageIndicators.count - 1 && page < numberOfPages - 1
     }
-    
-}
 
-// MARK: - NSObject Helper
-
-private extension NSObject {
-    
-    @objc var nameOfClass: String {
-        if let name = NSStringFromClass(type(of: self)).components(separatedBy: ".").last {
-            return name
-        }
-        return ""
-    }
-    
 }
