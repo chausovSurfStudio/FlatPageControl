@@ -40,7 +40,7 @@ whitelist_rules:
     - custom_rules
 
 line_length:
-  - 230
+  - 170
   - 250
 
     # - missing_docs
