@@ -16,15 +16,9 @@ extension FlatPageControl {
 
     // MARK: - Constants
 
-    struct Constants {
-        static let defaultPageIndicatorTintColor = UIColor.white.withAlphaComponent(0.2)
-        static let defaultCurrentPageIndicatorTintColor = UIColor.white
-        static let defaultExtraPageIndicatorTintColor = UIColor.white.withAlphaComponent(0.1)
-
+    private struct Constants {
         static let animationDuration: TimeInterval = 0.2
         static let pageIndicatorWidth: CGFloat = 10
-
-        static let maxPagesNumber: Int = 16
     }
 
 }
@@ -77,14 +71,14 @@ extension FlatPageControl {
             scrollIndicators(towards: direction)
             updatePageIndicatorsColor(animated: true)
         case .none:
-            if numberOfPages > Constants.maxPagesNumber {
+            if numberOfPages > maxPagesNumber {
                 if currentPage == 0 {
                     // current page is first page
                     offset = 0
                     updatePageIndicatorsColor(animated: true)
                 } else if currentPage == (numberOfPages - 1) {
                     // current page is last page
-                    offset = numberOfPages - Constants.maxPagesNumber
+                    offset = numberOfPages - maxPagesNumber
                     updatePageIndicatorsColor(animated: true)
                 } else {
                     // case, when we shouldn't scroll our indicators, redraw only two indicators with animation
@@ -106,8 +100,8 @@ extension FlatPageControl {
         } else if offset + countOfVisibleIndicators() - 1 > currentPage && offset < currentPage {
             // nothing to do, the current page is in the visible range
         } else {
-            let maxOffset = max(0, numberOfPages - Constants.maxPagesNumber)
-            let leftOffsetFromCurrentPage: Int = Constants.maxPagesNumber - 2
+            let maxOffset = max(0, numberOfPages - maxPagesNumber)
+            let leftOffsetFromCurrentPage: Int = maxPagesNumber - 2
             let maxAllowedOffsetForCurrentpage = max(0, currentPage - leftOffsetFromCurrentPage)
             offset = min(maxOffset, maxAllowedOffsetForCurrentpage)
         }
@@ -144,29 +138,12 @@ extension FlatPageControl {
     /// Method return color for indicator at specific index
     func colorForIndicator(at index: Int) -> UIColor {
         if index == currentPage {
-            return colorForCurrentPageIndicator()
-        } else if isLeftExtraPage(index) {
-            return colorForExtraPageIndicator()
-        } else if isRightExtraPage(index) {
-            return colorForExtraPageIndicator()
+            return currentPageIndicatorTintColor
+        } else if isLeftExtraPage(index) || isRightExtraPage(index) {
+            return extraPageIndicatorTintColor
         } else {
-            return colorForPageIndicator()
+            return pageIndicatorTintColor
         }
-    }
-
-    /// Normal page indicator color
-    func colorForPageIndicator() -> UIColor {
-        return pageIndicatorTintColor ?? Constants.defaultPageIndicatorTintColor
-    }
-
-    /// Current page indicator color
-    func colorForCurrentPageIndicator() -> UIColor {
-        return currentPageIndicatorTintColor ?? Constants.defaultCurrentPageIndicatorTintColor
-    }
-
-    /// Extra page indicator color
-    func colorForExtraPageIndicator() -> UIColor {
-        return extraPageIndicatorTintColor ?? Constants.defaultExtraPageIndicatorTintColor
     }
 
 }
@@ -177,7 +154,7 @@ extension FlatPageControl {
 
     /// Return you direction in which it is necessary to move the current indicators
     func scrollDirection() -> ScrollDirection {
-        guard numberOfPages > Constants.maxPagesNumber else {
+        guard numberOfPages > maxPagesNumber else {
             return .none
         }
         if isRightExtraPage(currentPage) {
@@ -222,7 +199,7 @@ extension FlatPageControl {
                                                       y: 0,
                                                       width: Constants.pageIndicatorWidth,
                                                       height: height))
-        indicator.changeIndicatorColor(colorForPageIndicator().withAlphaComponent(0.0))
+        indicator.changeIndicatorColor(pageIndicatorTintColor.withAlphaComponent(0.0))
         containerView.addSubview(indicator)
         if direction == .next {
             currentPageIndicators.append(indicator)
@@ -248,7 +225,7 @@ extension FlatPageControl {
     /// Return you new page indicator with passed frame
     func newPageIndicator(with frame: CGRect) -> FlatPageIndicator {
         guard let indicator = viewsPool.view() as? FlatPageIndicator else {
-            let indicator = FlatPageIndicator(frame: frame, tintColor: colorForPageIndicator())
+            let indicator = FlatPageIndicator(frame: frame, tintColor: pageIndicatorTintColor)
             viewsPool.push(indicator)
             return indicator
         }
@@ -257,7 +234,7 @@ extension FlatPageControl {
     }
 
     func countOfVisibleIndicators() -> Int {
-        return min(numberOfPages, Constants.maxPagesNumber)
+        return min(numberOfPages, maxPagesNumber)
     }
 
     func isLeftExtraPage(_ page: Int) -> Bool {

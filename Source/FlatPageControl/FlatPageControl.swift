@@ -10,7 +10,15 @@ import UIKit
 
 /// Custom page control with a limited number of visible indicators
 public class FlatPageControl: UIControl {
-    
+
+    // MARK: - ColorConstants
+
+    private struct ColorConstants {
+        static let defaultPageIndicatorTintColor = UIColor.white.withAlphaComponent(0.2)
+        static let defaultCurrentPageIndicatorTintColor = UIColor.white
+        static let defaultExtraPageIndicatorTintColor = UIColor.white.withAlphaComponent(0.1)
+    }
+
     // MARK: - IBOutlets
     
     @IBOutlet var containerView: UIView!
@@ -20,6 +28,7 @@ public class FlatPageControl: UIControl {
     public var view: UIView! {
         return subviews.first
     }
+    public var maxPagesNumber: Int = 16
     public var numberOfPages: Int = 1 {
         didSet {
             layoutSubviews()
@@ -30,17 +39,17 @@ public class FlatPageControl: UIControl {
             layoutSubviews()
         }
     }
-    public var pageIndicatorTintColor: UIColor? {
+    public var pageIndicatorTintColor: UIColor = ColorConstants.defaultPageIndicatorTintColor {
         didSet {
             updatePageIndicatorsColor()
         }
     }
-    public var currentPageIndicatorTintColor: UIColor? {
+    public var currentPageIndicatorTintColor: UIColor = ColorConstants.defaultCurrentPageIndicatorTintColor {
         didSet {
             updatePageIndicatorsColor()
         }
     }
-    public var extraPageIndicatorTintColor: UIColor? {
+    public var extraPageIndicatorTintColor: UIColor = ColorConstants.defaultExtraPageIndicatorTintColor {
         didSet {
             updatePageIndicatorsColor()
         }
