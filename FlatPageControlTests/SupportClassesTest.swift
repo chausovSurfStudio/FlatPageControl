@@ -30,4 +30,11 @@ class SupportClassesTest: XCTestCase {
         }
     }
 
+    func testViewsPool() {
+        var pool = ViewsPool()
+        XCTAssertNil(pool.view())
+        pool.push(UIView())
+        XCTAssertNotNil(pool.view())
+    }
+
 }
