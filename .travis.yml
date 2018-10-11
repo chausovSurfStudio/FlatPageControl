@@ -7,6 +7,6 @@ before_install:
 script:
   - set -o pipefail
   - xcodebuild clean build -sdk iphonesimulator -project FlatPageControl.xcodeproj -scheme FlatPageControl CODE_SIGNING_REQUIRED=NO | xcpretty
-  - xcodebuild test -scheme FlatPageControl -destination 'platform=iOS Simulator,name=iPhone 7'
+  - xcodebuild test -scheme FlatPageControl -destination 'platform=iOS Simulator,name=iPhone 7' | xcpretty
 after_success:
   - bash <(curl -s https://codecov.io/bash) -J 'FlatPageControl'
