@@ -14,6 +14,8 @@
 		84BE7079216413430035B21F /* FlatPageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE7078216413430035B21F /* FlatPageIndicator.swift */; };
 		84BE707B216413790035B21F /* FlatPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE707A216413790035B21F /* FlatPageControl.swift */; };
 		84BE707D216413860035B21F /* FlatPageControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BE707C216413860035B21F /* FlatPageControl.xib */; };
+		84CCB4CF216FDBCC0022BFEE /* SupportClassesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CCB4CE216FDBCC0022BFEE /* SupportClassesTest.swift */; };
+		84CCB4D2216FFEE60022BFEE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84CCB4D1216FFEE60022BFEE /* UIKit.framework */; };
 		84D76D1621694CB600DFE2A3 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D76D1521694CB600DFE2A3 /* NSObject.swift */; };
 		84D76D1C21694DC700DFE2A3 /* FlatPageControlLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D76D1B21694DC700DFE2A3 /* FlatPageControlLogic.swift */; };
 /* End PBXBuildFile section */
@@ -39,6 +41,8 @@
 		84BE7078216413430035B21F /* FlatPageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatPageIndicator.swift; sourceTree = "<group>"; };
 		84BE707A216413790035B21F /* FlatPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatPageControl.swift; sourceTree = "<group>"; };
 		84BE707C216413860035B21F /* FlatPageControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlatPageControl.xib; sourceTree = "<group>"; };
+		84CCB4CE216FDBCC0022BFEE /* SupportClassesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportClassesTest.swift; sourceTree = "<group>"; };
+		84CCB4D1216FFEE60022BFEE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		84D76D1521694CB600DFE2A3 /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
 		84D76D1B21694DC700DFE2A3 /* FlatPageControlLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatPageControlLogic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -48,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84CCB4D2216FFEE60022BFEE /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +75,7 @@
 				84BE70022162BD740035B21F /* Products */,
 				84BE70042162BD740035B21F /* FlatPageControl.h */,
 				84BE70052162BD740035B21F /* Info.plist */,
+				84CCB4D0216FFEE50022BFEE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,9 +103,18 @@
 			isa = PBXGroup;
 			children = (
 				84BE700F2162BD740035B21F /* FlatPageControlTests.swift */,
+				84CCB4CE216FDBCC0022BFEE /* SupportClassesTest.swift */,
 				84BE70112162BD740035B21F /* Info.plist */,
 			);
 			path = FlatPageControlTests;
+			sourceTree = "<group>";
+		};
+		84CCB4D0216FFEE50022BFEE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84CCB4D1216FFEE60022BFEE /* UIKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		84D76D1721694D2800DFE2A3 /* FlatPageControl */ = {
@@ -258,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84CCB4CF216FDBCC0022BFEE /* SupportClassesTest.swift in Sources */,
 				84BE70102162BD740035B21F /* FlatPageControlTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

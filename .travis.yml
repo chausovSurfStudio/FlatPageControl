@@ -4,8 +4,9 @@ xcode_project: FlatPageControl.xcodeproj
 xcode_scheme: FlatPageControl
 before_install:
   - gem install xcpretty -N
-  - brew update
-  - brew install swiftlint || true
 script:
   - set -o pipefail
   - xcodebuild clean build -sdk iphonesimulator -project FlatPageControl.xcodeproj -scheme FlatPageControl CODE_SIGNING_REQUIRED=NO | xcpretty
+  - xcodebuild test -scheme FlatPageControl -destination 'platform=iOS Simulator,name=iPhone 7' | xcpretty
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -J 'FlatPageControl'
