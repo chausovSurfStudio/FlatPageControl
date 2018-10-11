@@ -31,10 +31,15 @@ class SupportClassesTest: XCTestCase {
     }
 
     func testViewsPool() {
+        let superview = UIView()
         var pool = ViewsPool()
+
         XCTAssertNil(pool.view())
         pool.push(UIView())
-        XCTAssertNotNil(pool.view())
+        let newView = pool.view()
+        XCTAssertNotNil(newView)
+        superview.addSubview(newView!)
+        XCTAssertNil(pool.view())
     }
 
 }
