@@ -1,5 +1,5 @@
 language: Swift
-osx_image: xcode10
+osx_image: xcode9.4
 xcode_project: FlatPageControl.xcodeproj
 xcode_scheme: FlatPageControl
 before_install:
@@ -7,6 +7,6 @@ before_install:
 script:
   - set -o pipefail
   - xcodebuild clean build -sdk iphonesimulator -project FlatPageControl.xcodeproj -scheme FlatPageControl CODE_SIGNING_REQUIRED=NO | xcpretty
-  - xcodebuild test -scheme FlatPageControl -configuration "Debug" -sdk iphonesimulator -enableCodeCoverage YES -destination 'platform=iOS Simulator,name=iPhone 8'
+  - xcodebuild clean test -scheme FlatPageControl -configuration "Debug" -sdk iphonesimulator -enableCodeCoverage YES -destination 'platform=iOS Simulator,name=iPhone 8,OS=11.4' | xcpretty -c 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -J 'FlatPageControl'
