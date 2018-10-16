@@ -6,3 +6,5 @@
 
 # FlatPageControl
 Repository for custom page control
+
+![Demo](https://github.com/chausovSurfStudio/FlatPageControl/blob/master/flatPageControl.gif)
